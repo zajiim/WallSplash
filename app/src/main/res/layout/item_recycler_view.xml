@@ -16,8 +16,8 @@
         app:cardCornerRadius="@dimen/_10sdp">
         <ImageView
             android:id="@+id/imageView"
-            android:layout_width="@dimen/_100sdp"
-            android:layout_height="@dimen/_200sdp"
+            android:layout_width="@dimen/_150sdp"
+            android:layout_height="@dimen/_300sdp"
             android:scaleType="centerCrop"
             android:focusable="true"
             android:src="@mipmap/ic_launcher"/>

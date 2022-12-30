@@ -26,7 +26,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(
     }
 
     override fun initRecyclerView() {
-        val layoutManager = GridLayoutManager(context, 3)
+        val layoutManager = GridLayoutManager(context, 2)
         binding.rvHomeFragment.layoutManager = layoutManager
         binding.rvHomeFragment.adapter = recyclerViewAdapter
     }

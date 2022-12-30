@@ -14,6 +14,14 @@ interface ApiServices {
 
     ): PexelImageResponse
 
+
+    @Headers("Authorization: " + Apikey.API_KEY)
+    @GET("popular")
+    suspend fun getPopularResponse(
+        @Query("page") page: Int,
+
+        ): PexelImageResponse
+
 //    @Headers("Authorization: " + Apikey.API_KEY)
 //    @GET("search")
 //    suspend fun getSearchResults(

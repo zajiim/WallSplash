@@ -15,7 +15,7 @@ class HomePagingSource (
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, Photo> {
         return try {
             val nextPage = params.key ?: CURRENT_PAGE_INDEX
-            val responseHome = apiServices.getHomeResponse(nextPage!!)
+            val responseHome = apiServices.getHomeResponse(nextPage)
             LoadResult.Page (
                 data = responseHome.photos,
                 prevKey = if(nextPage == 1) null else nextPage-1,
