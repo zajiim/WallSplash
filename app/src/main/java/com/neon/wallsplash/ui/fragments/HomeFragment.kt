@@ -4,9 +4,8 @@ package com.neon.wallsplash.ui.fragments
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
-import com.neon.wallsplash.R
 import com.neon.wallsplash.databinding.FragmentHomeBinding
-import com.neon.wallsplash.recyclerView.HomeRecyclerViewAdapter
+import com.neon.wallsplash.recyclerView.RecyclerViewAdapter
 import com.neon.wallsplash.ui.fragments.base.BaseFragment
 import com.neon.wallsplash.ui.viewModels.HomeViewModel
 import kotlinx.coroutines.flow.collectLatest
@@ -31,7 +30,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(
         binding.rvHomeFragment.adapter = recyclerViewAdapter
     }
 
-    override var recyclerViewAdapter: HomeRecyclerViewAdapter =
-        HomeRecyclerViewAdapter()
+    override var recyclerViewAdapter: RecyclerViewAdapter =
+        RecyclerViewAdapter()
 
 }

@@ -6,11 +6,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.viewbinding.ViewBinding
-import com.neon.wallsplash.recyclerView.HomeRecyclerViewAdapter
+import com.neon.wallsplash.recyclerView.RecyclerViewAdapter
 
 abstract class BaseFragment<VB: ViewBinding>(private val layoutInflater: (inflater: LayoutInflater) -> VB
     ): Fragment() {
-    abstract var recyclerViewAdapter: HomeRecyclerViewAdapter
+    abstract var recyclerViewAdapter: RecyclerViewAdapter
         private var _binding: VB ?= null
     val binding: VB
     get() = _binding as VB

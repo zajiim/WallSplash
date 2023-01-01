@@ -1,24 +1,38 @@
 package com.neon.wallsplash.ui.fragments
 
 
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
+import androidx.recyclerview.widget.GridLayoutManager
 import com.neon.wallsplash.databinding.FragmentMiscellaneousBinding
-import com.neon.wallsplash.recyclerView.HomeRecyclerViewAdapter
+import com.neon.wallsplash.databinding.FragmentPopularBinding
+import com.neon.wallsplash.recyclerView.RecyclerViewAdapter
 import com.neon.wallsplash.ui.fragments.base.BaseFragment
+import com.neon.wallsplash.ui.viewModels.HomeViewModel
+import com.neon.wallsplash.ui.viewModels.MiscellaneousViewModel
+import com.neon.wallsplash.ui.viewModels.PopularViewModel
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.launch
 
 class MiscellaneousFragment : BaseFragment<FragmentMiscellaneousBinding>(
     FragmentMiscellaneousBinding::inflate
 ) {
-    override var recyclerViewAdapter: HomeRecyclerViewAdapter
-        get() = TODO("Not yet implemented")
-        set(value) {}
-
+    private val viewModel: MiscellaneousViewModel by viewModels()
     override fun initViewModel() {
-        TODO("Not yet implemented")
+        lifecycleScope.launch {
+            viewModel.miscellaneousPage.collectLatest {
+                recyclerViewAdapter.submitData(it)
+            }
+        }
     }
 
     override fun initRecyclerView() {
-        TODO("Not yet implemented")
+        val layoutManager = GridLayoutManager(context, 2)
+        binding.rvMiscellaneousFragment.layoutManager = layoutManager
+        binding.rvMiscellaneousFragment.adapter = recyclerViewAdapter
     }
 
+    override var recyclerViewAdapter: RecyclerViewAdapter =
+        RecyclerViewAdapter()
 
 }

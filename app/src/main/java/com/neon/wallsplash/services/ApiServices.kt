@@ -22,6 +22,13 @@ interface ApiServices {
 
         ): PexelImageResponse
 
+    @Headers("Authorization: " + Apikey.API_KEY)
+    @GET("search?query=nature")
+    suspend fun getMiscellaneousResponse(
+        @Query("page") page: Int,
+
+        ): PexelImageResponse
+
 //    @Headers("Authorization: " + Apikey.API_KEY)
 //    @GET("search")
 //    suspend fun getSearchResults(

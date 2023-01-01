@@ -11,16 +11,15 @@ import com.bumptech.glide.load.resource.bitmap.BitmapTransitionOptions
 import com.neon.wallsplash.R
 import com.neon.wallsplash.databinding.ItemRecyclerViewBinding
 import com.neon.wallsplash.models.Photo
-import com.neon.wallsplash.models.Src
 
-class HomeRecyclerViewAdapter: PagingDataAdapter<Photo, HomeRecyclerViewAdapter.MyViewHolder>(DiffUtilCallBack()) {
+class RecyclerViewAdapter: PagingDataAdapter<Photo, RecyclerViewAdapter.MyViewHolder>(DiffUtilCallBack()) {
     inner class MyViewHolder(view: View): RecyclerView.ViewHolder(view) {
         private val binding = ItemRecyclerViewBinding.bind(view)
 
         fun bind(data: Photo) {
             Glide.with(itemView.context)
                 .asBitmap()
-                .load(data.src.medium)
+                .load(data.src.large)
                 .centerCrop()
                 .transition(BitmapTransitionOptions.withCrossFade(80))
                 .error(R.drawable.ic_error)
