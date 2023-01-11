@@ -4,6 +4,8 @@ package com.neon.wallsplash.ui.fragments
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.neon.wallsplash.databinding.FragmentHomeBinding
 import com.neon.wallsplash.recyclerView.RecyclerViewAdapter
 import com.neon.wallsplash.ui.fragments.base.BaseFragment

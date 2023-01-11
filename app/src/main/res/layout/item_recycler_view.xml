@@ -17,7 +17,7 @@
         <ImageView
             android:id="@+id/imageView"
             android:layout_width="@dimen/_150sdp"
-            android:layout_height="@dimen/_300sdp"
+            android:layout_height="@dimen/_280sdp"
             android:scaleType="centerCrop"
             android:focusable="true"
             android:src="@mipmap/ic_launcher"/>
