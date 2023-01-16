@@ -10,6 +10,7 @@ import com.neon.wallsplash.recyclerView.RecyclerViewAdapter
 import com.neon.wallsplash.ui.fragments.base.BaseFragment
 import com.neon.wallsplash.ui.viewModels.HomeViewModel
 import com.neon.wallsplash.ui.viewModels.PopularViewModel
+import com.neon.wallsplash.utils.Constants
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
@@ -32,6 +33,6 @@ class PopularFragment : BaseFragment<FragmentPopularBinding>(
     }
 
     override var recyclerViewAdapter: RecyclerViewAdapter =
-        RecyclerViewAdapter()
+        RecyclerViewAdapter(Constants.NavigationIntent.FromHomeToDownload)
 
 }

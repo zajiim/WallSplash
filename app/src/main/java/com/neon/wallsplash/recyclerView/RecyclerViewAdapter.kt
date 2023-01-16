@@ -3,6 +3,7 @@ package com.neon.wallsplash.recyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.Navigation
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
@@ -11,8 +12,10 @@ import com.bumptech.glide.load.resource.bitmap.BitmapTransitionOptions
 import com.neon.wallsplash.R
 import com.neon.wallsplash.databinding.ItemRecyclerViewBinding
 import com.neon.wallsplash.models.Photo
+import com.neon.wallsplash.ui.fragments.MainFragmentDirections
+import com.neon.wallsplash.utils.Constants
 
-class RecyclerViewAdapter: PagingDataAdapter<Photo, RecyclerViewAdapter.MyViewHolder>(DiffUtilCallBack()) {
+class RecyclerViewAdapter(private val navigationId: Int? ): PagingDataAdapter<Photo, RecyclerViewAdapter.MyViewHolder>(DiffUtilCallBack()) {
     inner class MyViewHolder(view: View): RecyclerView.ViewHolder(view) {
         private val binding = ItemRecyclerViewBinding.bind(view)
 
@@ -24,6 +27,16 @@ class RecyclerViewAdapter: PagingDataAdapter<Photo, RecyclerViewAdapter.MyViewHo
                 .transition(BitmapTransitionOptions.withCrossFade(80))
                 .error(R.drawable.ic_error)
                 .into(binding.imageView)
+
+            val imageData = arrayOf(data.src.large.toString())
+            itemView.setOnClickListener { v ->
+                when(navigationId) {
+                    Constants.NavigationIntent.FromHomeToDownload -> {
+                        Navigation.findNavController(v)
+                            .navigate(MainFragmentDirections.actionMainFragmentToDownloadFragment(imageData))
+                    }
+                }
+            }
         }
 
     }
