@@ -1,13 +1,17 @@
 package com.neon.wallsplash.ui.fragments
 
 
+import android.view.View
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.neon.wallsplash.databinding.FragmentHomeBinding
+import com.neon.wallsplash.models.Photo
 import com.neon.wallsplash.recyclerView.RecyclerViewAdapter
+import com.neon.wallsplash.recyclerView.WallpaperInteractionListener
 import com.neon.wallsplash.ui.fragments.base.BaseFragment
 import com.neon.wallsplash.ui.viewModels.HomeViewModel
 import com.neon.wallsplash.utils.Constants
@@ -17,7 +21,7 @@ import kotlinx.coroutines.launch
 
 class HomeFragment : BaseFragment<FragmentHomeBinding>(
     FragmentHomeBinding::inflate
-) {
+), WallpaperInteractionListener {
     private val viewModel: HomeViewModel by viewModels()
     override fun initViewModel() {
         lifecycleScope.launch {
@@ -34,6 +38,13 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(
     }
 
     override var recyclerViewAdapter: RecyclerViewAdapter =
-        RecyclerViewAdapter(Constants.NavigationIntent.FromHomeToDownload)
+        RecyclerViewAdapter( this)
 
-}
+    override fun onClickItem(data: Photo, view: View) {
+        val imageData = arrayOf(data.src.large)
+            Navigation.findNavController(view)
+                    .navigate(MainFragmentDirections.actionMainFragmentToDownloadFragment(imageData))
+            }
+
+    }
+

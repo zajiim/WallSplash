@@ -15,7 +15,7 @@ import com.neon.wallsplash.models.Photo
 import com.neon.wallsplash.ui.fragments.MainFragmentDirections
 import com.neon.wallsplash.utils.Constants
 
-class RecyclerViewAdapter(private val navigationId: Int? ): PagingDataAdapter<Photo, RecyclerViewAdapter.MyViewHolder>(DiffUtilCallBack()) {
+class RecyclerViewAdapter(private val listener: WallpaperInteractionListener): PagingDataAdapter<Photo, RecyclerViewAdapter.MyViewHolder>(DiffUtilCallBack()) {
     inner class MyViewHolder(view: View): RecyclerView.ViewHolder(view) {
         private val binding = ItemRecyclerViewBinding.bind(view)
 
@@ -28,14 +28,16 @@ class RecyclerViewAdapter(private val navigationId: Int? ): PagingDataAdapter<Ph
                 .error(R.drawable.ic_error)
                 .into(binding.imageView)
 
-            val imageData = arrayOf(data.src.large.toString())
-            itemView.setOnClickListener { v ->
-                when(navigationId) {
-                    Constants.NavigationIntent.FromHomeToDownload -> {
-                        Navigation.findNavController(v)
-                            .navigate(MainFragmentDirections.actionMainFragmentToDownloadFragment(imageData))
-                    }
-                }
+
+            itemView.setOnClickListener {
+                listener.onClickItem(data, it)
+//                val imageData = arrayOf(data.src.large)
+//                when(navigationId) {
+//                    Constants.NavigationIntent.FromHomeToDownload -> {
+//                        Navigation.findNavController(v)
+//                            .navigate(MainFragmentDirections.actionMainFragmentToDownloadFragment(imageData))
+//                    }
+//                }
             }
         }
 
