@@ -6,8 +6,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.FragmentActivity
 import com.google.android.material.tabs.TabLayoutMediator
+import com.neon.wallsplash.R
 import com.neon.wallsplash.databinding.FragmentMainBinding
 import com.neon.wallsplash.ui.fragments.adapters.ViewPagerAdapter
 
@@ -44,6 +46,7 @@ class MainFragment : Fragment() {
 
     private fun initToolBar() {
         binding.toolbar.title = "WallSplash"
+        binding.toolbar.setTitleTextColor(ContextCompat.getColor(requireContext(), R.color.black))
         (activity as AppCompatActivity).setSupportActionBar(binding.toolbar)
     }
 

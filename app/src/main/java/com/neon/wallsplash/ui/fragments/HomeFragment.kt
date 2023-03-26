@@ -1,6 +1,7 @@
 package com.neon.wallsplash.ui.fragments
 
 
+import android.annotation.SuppressLint
 import android.view.View
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
@@ -40,6 +41,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(
     override var recyclerViewAdapter: RecyclerViewAdapter =
         RecyclerViewAdapter( this)
 
+    @SuppressLint("SuspiciousIndentation")
     override fun onClickItem(data: Photo, view: View) {
         val imageData = arrayOf(data.src.large)
             Navigation.findNavController(view)

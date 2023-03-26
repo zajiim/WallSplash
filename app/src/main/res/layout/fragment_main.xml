@@ -22,7 +22,7 @@
             app:expandedTitleTextAppearance="@style/Toolbar.TitleText.Expanded"
             app:expandedTitleTextColor="@color/white"
             app:layout_scrollFlags="scroll|enterAlways|snap|snapMargins">
-            
+
             <androidx.appcompat.widget.Toolbar
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
@@ -50,7 +50,6 @@
             app:tabGravity="center"
             android:background="@color/background_color"
             app:tabIndicator="@drawable/tab_indicator"
-
             app:tabIndicatorGravity="center"
             app:tabIndicatorHeight="@dimen/_30sdp"
             app:tabSelectedTextColor="@color/white"
